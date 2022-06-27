@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<head>
+<title>Make a to do list!</title>
+<link rel="stylesheet" href="/static/stylesheets/style.css" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Baloo+Bhai|Candal|Chewy&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+</head>
+
+
+<body>
+
+    <div class="hero-image">
+<div class="todo-container">
+    <h2>Task Tracker!</h2>
+
+<div class="todo">
+
+<form action="/" method="POST" class="todo-header" onsubmit="return checkForm(this);">
+<div class="item">
+    <input class="input" type="text" name="content"  placeholder = "What do you want to do... ?">
+    
+    <button type="submit"><span class="fas fa-plus"></span></button>
+</div>
+<!-- <maxlength="40"> -->
+</form>
+
+</div>
+<!-- <ul class="todo-list">
+<li class="todo-list-item">
+<div class="todo-list-item-name">Some Text</div>
+<a href="" class="edit">
+<span class="fas fa-edit"></span>
+</a>
+<a href="" class="remove">
+<span class="fas fa-times"></span>
+</a>
+</li>
+</ul> -->
+
+<ul class="todo-list">
+    <% todoTasks.forEach(details => { %>
+    <li class="todo-list-item">
+
+    <div class="todo-list-item-name"><%= details.content %></div>
+
+    <a href="/edit/<%= details._id %>" class="edit">
+    <span class="fas fa-edit"></span>
+    </a>
+    <a href="/remove/<%= details._id %>" class="remove">
+    <span class="fas fa-times"></span>
+    </a>
+    </li>
+    <% }) %>
+    </ul>
+
+
+</div>
+</div>
+<script>
+
+
+
+        
+// function check(){
+//     if(input.value != ""){
+//         new item(input.value);
+//         input.value = "";
+//     } else if(input.value === "") {
+//             alert("You must write something!");
+//         } 
+//     }
+function checkForm(oForm) {
+    for (var i = 0; i < oForm.elements.length; i++) {
+        if (GetElementValue(oForm.elements[i]).length > 0)
+            return true;
+            
+    }
+    alert("Insert A Task! DO SOMETHING!");
+    return false;
+}
+
+function GetElementValue(element) {
+    if ((element.type === "checkbox" || element.type === "radio") && element.checked === false)
+        return "";
+    return element.value;
+}
+
+
+
+</script>
+</body>
