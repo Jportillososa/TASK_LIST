@@ -4,9 +4,10 @@ const dotenv = require("dotenv");
 const mongoose = require('mongoose');
 //models
 const TodoTask = require("./models/TodoTask");
-// const url = 'api/posts/';
+// const url = '/';
 dotenv.config();
-
+const path = require('path');
+const PORT = process.env.PORT || 5000;
 
 app.use("/static", express.static("public"));
 
@@ -21,7 +22,7 @@ app.use(express.urlencoded({ extended: true }));
     mongoose.connect(process.env.DB_CONNECT, { useNewUrlParser: true }, () => {
     console.log("Connected to db!");
 
-    app.listen(5000, () => console.log("Server Up and running"));
+    app.listen(PORT, () => console.log("Server Up and running"));
     });
 
 
