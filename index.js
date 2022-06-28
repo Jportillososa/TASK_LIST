@@ -4,7 +4,7 @@ const dotenv = require("dotenv");
 const mongoose = require('mongoose');
 //models
 const TodoTask = require("./models/TodoTask");
-const url = '/';
+// const url = '/';
 dotenv.config();
 const path = require('path');
 // const PORT = process.env.PORT || 5000;
